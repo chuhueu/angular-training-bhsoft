@@ -1,0 +1,49 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { UserModel } from '../models/user.model';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: 'my-auth-token',
+  }),
+};
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  url = 'https://angular-training-bhsoft.herokuapp.com/api';
+  loginUrl = `${this.url}/auth/login`;
+  registerUrl = `${this.url}/auth/register`;
+  userUrl = `${this.url}/user`;
+  constructor(private http: HttpClient) {}
+
+  public login(email: string, password: string) {
+    return this.http.post<UserModel>(
+      this.loginUrl,
+      {
+        email: email,
+        password: password,
+      },
+      httpOptions
+    );
+  }
+  public register(username: string, email: string, password: string) {
+    return this.http.post<UserModel>(
+      this.registerUrl,
+      {
+        username: username,
+        email: email,
+        password: password,
+      },
+      httpOptions
+    );
+  }
+  public logout() {
+    return localStorage.removeItem('user');
+  }
+  public getUser() {
+    return this.http.get(this.userUrl, httpOptions);
+  }
+}

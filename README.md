@@ -1,1 +1,1 @@
-# angular-training-bhsoft
+app: https://task-note-route.netlify.app
