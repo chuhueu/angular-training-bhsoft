@@ -1,0 +1,41 @@
+<div class="title">
+  <h3 class="overdue">Overdue</h3>
+  <a style="cursor: pointer" *ngIf="!isUser; else add" (click)="onShowAlert()"
+    >Add Note</a
+  >
+  <ng-template #add> <a routerLink="/note/add">Add Note</a></ng-template>
+</div>
+<table class="table">
+  <thead class="thread">
+    <tr>
+      <th *ngFor="let item of data">{{ item.title }}</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let value of display; let i = index">
+      <td *ngFor="let item of data; let j = index">
+        {{ data[j].values[i] | uppercase }}
+      </td>
+      <td>
+        <div class="dropdown">
+          <button
+            class="buttonDrop dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+          >
+            <span class="glyphicon glyphicon-option-horizontal"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a routerLink="note/edit/{{ i }}">Edit</a></li>
+            <li><a routerLink="#">Share</a></li>
+            <li>
+              <a style="cursor: pointer" (click)="onHandleDelete(i)">Delete</a>
+            </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="alert alert-info" *ngIf="showAlertLogin">You have to login</div>

@@ -1,0 +1,45 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  max-height: 35px;
+  width: 100px;
+}
+.btn:hover {
+  outline: none;
+}
+.overdue {
+  margin: auto 0;
+  color: #e90d0d;
+}
+.table {
+  border: 1px solid #c9c0c0;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.thread {
+  background-color: #e7e4e4;
+  color: #332c2c;
+}
+.table > tbody > tr > td,
+.table > thead > tr > th {
+  padding: 20px;
+}
+.dropdown-toggle {
+  background: unset;
+  border: unset;
+}
+.dropdown-toggle span {
+  color: gray;
+  background-color: unset;
+}
+.styleTitle {
+  font-weight: 700;
+}
+.styleOverdue {
+  color: #f10707;
+  border: 1px solid #f10707;
+  padding: 4px;
+  border-radius: 20px;
+}

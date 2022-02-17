@@ -1,0 +1,11 @@
+input[type="email"],
+input[type="password"],
+input[type="username"] {
+  width: 70%;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.btn {
+  margin-right: 10px;
+}

@@ -1,0 +1,13 @@
+<div>
+  <div class="styleLogout" *ngIf="isUser; else user">
+    <button class="btn btn-primary" (click)="onHandleLogOut()">Log out</button>
+  </div>
+  <ng-template #user>
+    <div class="styleLogout">
+      <button class="btn btn-primary" routerLink="/auth/login">Log In</button>
+      <button class="btn btn-primary" routerLink="/auth/signup">Sign Up</button>
+    </div>
+  </ng-template>
+  <app-table [data]="viewTableNote" [isUser]="isUser"></app-table>
+  <router-outlet></router-outlet>
+</div>
