@@ -13,6 +13,10 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
+  /*url = 'https://angular-training-bhsoft.herokuapp.com/api';
+  loginUrl = `${this.url}/auth/login`;
+  registerUrl = `${this.url}/auth/register`;
+  userUrl = `${this.url}/user`;*/
   loginUrl = 'http://localhost:5000/api/auth/login';
   registerUrl = 'http://localhost:5000/api/auth/register';
   userUrl = 'http://localhost:5000/api/user';
