@@ -1,31 +1,34 @@
-<form (ngSubmit)="onSubmit()" #f="ngForm">
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()" #f="ngForm">
   <div class="form-group">
-    <label for="name">Title</label>
+    <label for="title">Title</label>
     <input
       type="text"
-      id="name"
+      id="title"
       class="form-control"
-      name="title"
-      ngModel
-      required
-      #title="ngModel"
+      formControlName="title"
     />
-    <p class="help-block" *ngIf="!title.valid && title.touched">
+    <p
+      class="help-block"
+      *ngIf="!addForm.get('title')?.valid && addForm.get('title')?.touched"
+    >
       You have to fill the input!
     </p>
   </div>
   <div class="form-group">
-    <label for="name">Description</label>
+    <label for="description">Description</label>
     <input
       type="text"
-      id="name"
+      id="description"
       class="form-control"
-      name="description"
-      ngModel
-      required
-      #desc="ngModel"
+      formControlName="description"
     />
-    <p class="help-block" *ngIf="!desc.valid && desc.touched">
+    <p
+      class="help-block"
+      *ngIf="
+        !addForm.get('description')?.valid &&
+        addForm.get('description')?.touched
+      "
+    >
       You have to fill the input!
     </p>
   </div>
@@ -37,8 +40,7 @@
           class="form-control"
           placeholder="yyyy-mm-dd"
           name="dp"
-          [(ngModel)]="model"
-          ngModel
+          formControlName="date"
           ngbDatepicker
           #d="ngbDatepicker"
           required
@@ -59,7 +61,7 @@
     <button
       class="btn btn-success"
       style="margin: 10px 10px 10px 0px"
-      [disabled]="!f.valid"
+      [disabled]="!addForm.valid"
     >
       Add Note
     </button>

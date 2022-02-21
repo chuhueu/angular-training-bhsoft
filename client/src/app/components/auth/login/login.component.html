@@ -1,38 +1,31 @@
-<form (ngSubmit)="onSubmit()" #f="ngForm">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #f="ngForm">
   <div class="form-group">
     <label for="email">Email address:</label>
     <input
       type="email"
-      class="form-control"
-      placeholder="Enter email"
       id="email"
-      name="email"
-      required
-      ngModel
-      email
-      #email="ngModel"
+      formControlName="email"
+      class="form-control"
     />
-    <p class="help-block" *ngIf="!email.valid && email.touched">
-      The email is not correct!
+    <p
+      class="help-block"
+      *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched"
+    >
+      Please enter a valid email
     </p>
   </div>
   <div class="form-group">
     <label for="password">Password:</label>
     <input
       type="password"
-      class="form-control"
-      placeholder="Enter password"
       id="password"
-      name="password"
-      required
-      ngModel
-      #password="ngModel"
+      formControlName="password"
+      class="form-control"
     />
   </div>
-  <p class="help-block" *ngIf="!password.valid && password.touched">
-    You have to enter password
+  <p class="alert alert-danger" *ngIf="error" style="margin-top: 10px">
+    Wrong email or password
   </p>
-  <p class="alert alert-danger" *ngIf="error">Wrong email or password</p>
   <div class="form-group form-check">
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox" /> Remember me

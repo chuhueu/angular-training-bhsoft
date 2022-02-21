@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginModel } from '../../../models/login.model';
 import { AuthService } from '../../../services/index';
 @Component({
   selector: 'app-login',
@@ -9,8 +10,9 @@ import { AuthService } from '../../../services/index';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('f') loginForm: NgForm;
-  error = false;
+  //@ViewChild('f') loginForm: NgForm;
+  public loginForm: FormGroup;
+  public error = false;
   //returnUrl: string;
   constructor(
     private router: Router,
@@ -19,8 +21,8 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // get return url from route parameters or default to '/note'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/note';
+    const loginModel = new LoginModel();
+    this.loginForm = loginModel.createForm();
   }
 
   //   Not authenticated, send to login
